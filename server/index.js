@@ -25,14 +25,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(uploadsDir));
 
+// Disable buffering so queries fail immediately if connection is down
+mongoose.set('bufferCommands', false);
+
 // Connect to MongoDB
 const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/farmdirect';
 mongoose.connect(mongoUri)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => {
     console.error('MongoDB connection error:', err);
-    process.exit(1);
   });
+
+// Database Readiness Middleware
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      success: false,
+      message: 'Database is still connecting or offline. Please verify your Atlas Network Access (IP Whitelist) is set to 0.0.0.0/0.'
+    });
+  }
+  next();
+});
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
