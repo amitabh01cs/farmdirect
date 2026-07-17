@@ -24,9 +24,11 @@
       "dest": "client/assets/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "client/$1",
       "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/$1"
     },
     {
       "src": "/(.*)",
