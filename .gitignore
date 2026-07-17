@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Local env files
+.env
+server/.env
+
+# Build outputs
+client/dist/
+dist/
+
+# Uploads and cache
+server/uploads/*
+!server/uploads/.gitkeep
+.vite/
+.eslintcache
+
+# Logs
+*.log
