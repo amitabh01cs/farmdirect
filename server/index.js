@@ -54,6 +54,10 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'FarmDirect API is running' });
 });
 
+app.get('/', (req, res) => {
+  res.send('FarmDirect API Server is running!');
+});
+
 // Start Cron tasks
 const { startPriceSyncJob } = require('./tasks/priceSyncJob');
 startPriceSyncJob();
