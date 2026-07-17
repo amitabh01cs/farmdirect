@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@rolldown/binding-win32-x64-msvc": "^1.2.0",
     "@tailwindcss/vite": "^4.3.3",
     "axios": "^1.18.1",
     "leaflet": "^1.9.4",
@@ -20,6 +19,9 @@
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.18.1",
     "tailwindcss": "^4.3.3"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
